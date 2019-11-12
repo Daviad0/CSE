@@ -513,7 +513,6 @@ int workwavefront(){
             else if (directional[strow][stcol] == 2){
                 break;
             }
-            sleep(1);
             retracecount++;
         }
         retrace[retracecount] = 4;
@@ -535,9 +534,9 @@ int workwavefront(){
         }
         cout << "The shortest path will take the SDV ";
         cout << retracecount-1;
-        cout << " moves (including turns) to reach the goal!";
+        cout << " moves (including turns) to reach the goal!" << endl;
     }else{
-        cout << "There is no possible pathway to reach the goal from the SDV!";
+        cout << "There is no possible pathway to reach the goal from the SDV!" << endl;
     }
     return 0;
 }
