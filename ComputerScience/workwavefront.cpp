@@ -18,8 +18,8 @@ int pathway[5][5] = {
     {0,1,0,0,0},
     {0,0,0,1,0},
     {1,1,1,1,0},
-    {0,0,0,1,0},
-    {0,1,0,0,0}
+    {0,1,0,1,0},
+    {0,0,0,0,0}
 };
 
 int directional[5][5] = {
@@ -397,8 +397,10 @@ int workwavefront(){
         int stcol = 0;
         int nerow = 0;
         int necol = 0;
+        int barow = 0;
+        int bacol = 0;
         int direct = 0;
-        //UP = 1, LEFT = 2, DOWN = 3, RIGHT = 4
+        //NORTH = 1, EAST = 2, SOUTH = 3, WEST = 4
         int retrace[90];
         //FORWARD = 1, TURN LEFT = 2, TURN RIGHT = 3, END = 4
         for(int i = 0;i< 5;i++){
@@ -446,14 +448,16 @@ int workwavefront(){
             stcol = necol;
             if (directional[strow][stcol] == 3){
                 if(direct == 1){
-                    
+                    //STAYING STRAIGHT
                 }else if(direct == 2){
                     retrace[retracecount] = 2;
                     retracecount++;
+                    //TURN LEFT
                 }
                 else if(direct == 4){
                     retrace[retracecount] = 3;
                     retracecount++;
+                    //TURN RIGHT
                 }
                 nerow = strow-1;
                 necol = stcol;
@@ -498,11 +502,11 @@ int workwavefront(){
                 if(direct == 3){
                     
                 }else if(direct == 2){
-                    retrace[retracecount] = 2;
+                    retrace[retracecount] = 3;
                     retracecount++;
                 }
                 else if(direct == 4){
-                    retrace[retracecount] = 3;
+                    retrace[retracecount] = 2;
                     retracecount++;
                 }
                 nerow = strow+1;
@@ -520,10 +524,10 @@ int workwavefront(){
             if(retrace[i] == 1){
                 cout << "FORWARD";
             }else if(retrace[i] == 2){
-                cout << "TURN";
+                cout << "TURN LEFT";
             }
             else if(retrace[i] == 3){
-                cout << "TURN";
+                cout << "TURN RIGHT";
             }
             else if(retrace[i] == 4){
                 cout << "Finished!" << endl;
